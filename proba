@@ -1,0 +1,51 @@
+#include <stdio.h>
+ 
+int main()
+{
+  int a, b, f, q, c, d, k, sum = 0;
+  int elso[10][10], masodik[10][10], szorzat[10][10];
+ 
+  printf("Adja meg az elso matrix oszlopainak es sorainak szamat\n");
+  scanf("%d%d", &a, &b);
+  printf("Adja meg az elso matrix elemeit egyesevel\n");
+ 
+  for (c = 0; c < a; c++)
+    for (d = 0; d < b; d++)
+      scanf("%d", &elso[c][d]);
+ 
+  printf("Adja meg a masodik matrix oszlopainak es sorainak szamat\n");
+  scanf("%d%d", &f, &q);
+ 
+  if (b != f)
+    printf("A matrixok nem szorozhatok egymassal.\n");
+  else
+  {
+    printf("Adja meg a masodik matrix elemeit egyesevel\n");
+ 
+    for (c = 0; c < f; c++)
+      for (d = 0; d < q; d++)
+        scanf("%d", &masodik[c][d]);
+ 
+    for (c = 0; c < a; c++) {
+      for (d = 0; d < q; d++) {
+        for (k = 0; k < f; k++) {
+          sum = sum + elso[c][k]*masodik[k][d];
+        }
+ 
+        szorzat[c][d] = sum;
+        sum = 0;
+      }
+    }
+ 
+    printf("Eredmeny:\n");
+ 
+    for (c = 0; c < a; c++) {
+      for (d = 0; d < q; d++)
+        printf("%d\t", szorzat[c][d]);
+ 
+      printf("\n");
+    }
+  }
+ 
+  return 0;
+}
